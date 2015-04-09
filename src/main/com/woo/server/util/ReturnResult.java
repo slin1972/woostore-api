@@ -1,14 +1,10 @@
 package com.woo.server.util;
 
-import java.util.Map;
 
 public class ReturnResult extends CommonResult{
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 9214295854230711421L;
-	private Map<String,Object> data;
+	private Object data;
     
     public ReturnResult() {
 		super();
@@ -25,13 +21,11 @@ public class ReturnResult extends CommonResult{
     	this.msg = msg;
     }
 
-    
-
-	public Map<String,Object> getData() {
+	public Object getData() {
 		return data;
 	}
 
-	public void setData(Map<String,Object> data) {
+	public void setData(Object data) {
 		this.data = data;
 	}
 

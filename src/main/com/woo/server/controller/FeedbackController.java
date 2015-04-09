@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.woo.server.domain.Feedback;
@@ -25,13 +26,13 @@ public class FeedbackController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public CommonResult add(
-			@RequestAttribute(value = "uid") Long uid,
-			@RequestAttribute(value = "feedback") String feedbackJson,
-			@RequestAttribute(value = "av") String av,
-			@RequestAttribute(value = "et") String et,
-			@RequestAttribute(value = "os") String os,
-			@RequestAttribute(value = "m") String m,
-			@RequestAttribute String dpi,HttpSession session) {
+			@RequestParam(value = "uid") Long uid,
+			@RequestParam(value = "feedback") String feedbackJson,
+			@RequestParam(value = "av") String av,
+			@RequestParam(value = "et") String et,
+			@RequestParam(value = "os") String os,
+			@RequestParam(value = "m") String m,
+			@RequestParam String dpi,HttpSession session) {
 		Feedback feedback = null;
 		try {
 			feedback = JsonUtil.jsonToObject(feedbackJson, Feedback.class);

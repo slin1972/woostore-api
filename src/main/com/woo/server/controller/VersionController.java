@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.woo.server.domain.Version;
@@ -28,11 +29,11 @@ public class VersionController {
 
 	@RequestMapping(value = "/last", method = RequestMethod.GET)
 	public CommonResult last(
-			@RequestAttribute(value = "av") String av,
-			@RequestAttribute(value = "et") String et,
-			@RequestAttribute(value = "os") String os,
-			@RequestAttribute(value = "m") String m,
-			@RequestAttribute String dpi,HttpSession session) {
+			@RequestParam(value = "av") String av,
+			@RequestParam(value = "et") String et,
+			@RequestParam(value = "os") String os,
+			@RequestParam(value = "m") String m,
+			@RequestParam String dpi,HttpSession session) {
 		ReturnResult r = new ReturnResult(true, 0, "OK") ;
 		
 		Version version = null ;

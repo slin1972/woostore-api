@@ -98,4 +98,28 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	</jpa:repositories>
 
 	<bean id="accountDaoPlus" class="......." /> -->
+	
+	<!-- Spring 统一日志处理   LogInterceptor拦截器 配置　-->   
+	<bean id="logLnterceptor" class="com.woo.web.util.LogInterceptor"/>
+	<!-- Spring 统一异常处理  ExceptionAdvisor配置 -->
+	<bean id="exceptionHandler" class="com.woo.web.util.ExceptionAdvisor"></bean>
+	
+	<!-- Bean自动代理处理器 配置-->  
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator" >
+	   <property name="beanNames">
+	    <list>	<!-- 配置需要进行日志记录的Service和Dao -->
+	     	<value>*Dao</value>
+	     			<!-- 配置所有Service结尾命名的Bean，即所有Service层的类都要经过exceptionHandler异常处理类 --> 
+			<value>*Service</value>  <!-- Service层的Bean ID 命名要以Service结尾 -->
+	    </list>
+	   </property>
+	   <property name="interceptorNames">
+	    <list>
+		     <value>exceptionHandler</value>
+		     <value>logLnterceptor</value>
+		     <!--<value>transactionInterceptor</value>-->
+	    </list>
+	   </property>
+	</bean>
+<!-- ——————————————————Spring 统一日志处理 + 统一异常处理  配置结束—————————————悲伤的分隔线—————————— -->
 </beans> 
