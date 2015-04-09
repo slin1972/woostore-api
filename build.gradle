@@ -1,0 +1,76 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'maven'
+apply plugin: 'war'
+
+webAppDirName = 'WebContent'  
+sourceSets { 
+	 main { 
+		 java.srcDir "$projectDir/src/main"
+	 } 
+	 
+	 test {
+	 	java.srcDir "$projectDir/src/test"
+	 }
+}
+
+// tag::repositories[]
+repositories {
+	flatDir(dirs: "$projectDir/WebContent/WEB-INF/lib") 
+    mavenLocal()
+    mavenCentral()
+}
+// end::repositories[]
+
+
+
+// tag::dependencies[]
+dependencies {
+	providedCompile  'javax.servlet:servlet-api:2.5' 
+    providedCompile  'javax.servlet:jstl:1.2'     
+    providedCompile  'junit:junit:4.11'     
+    
+    compile 'org.springframework:spring-context:4.1.1.RELEASE'
+    compile 'org.springframework:spring-context-support:4.1.1.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.1.1.RELEASE'
+    compile 'org.springframework.data:spring-data-jpa:1.7.0.RELEASE'
+    compile 'org.hibernate:hibernate-core:4.3.6.Final'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.6.Final'
+    compile 'org.hibernate:hibernate-ehcache:4.3.6.Final'
+    compile "c3p0:c3p0:0.9.1.2"
+    compile 'mysql:mysql-connector-java:5.1.26'
+    compile 'org.slf4j:slf4j-nop:1.7.6' 
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.3'
+    compile 'io.netty:netty-all:4.0.24.Final'
+    compile 'org.springframework:spring-test:4.1.1.RELEASE'
+    compile 'commons-fileupload:commons-fileupload:1.3.1'
+    compile 'org.quartz-scheduler:quartz:2.2.1'
+    compile 'org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.3'
+    compile 'org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:1.8.3'
+} 
+// end::dependencies[]
+
+
+task copyJars(type: Copy) {
+  from configurations.runtime
+  into 'WebContent/WEB-INF/lib/'
+}
+
+war {
+	baseName = "shieldAppServer"
+	from("WebContent/"){}
+	
+	dependsOn copyJars  
+    from("$projectDir/WebContent/") {  
+        include "**.*"
+        into("./")  
+    }  
+}
+eclipse {
+    classpath {
+       downloadSources=true
+    }
+}
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+// END ALL
