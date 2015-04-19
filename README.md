@@ -56,8 +56,10 @@
 * 附录：
 
 Item 数据模型
+
 <pre>
-    {
+{
+
     id:112,
     softname:'业务名称 如app的包名等',
     itemname:'资源名称', 
