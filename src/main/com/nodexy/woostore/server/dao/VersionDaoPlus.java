@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import com.nodexy.woostore.server.domain.Version;
+import com.nodexy.woostore.server.domain.AppVersion;
 
 @Repository
 public class VersionDaoPlus{
@@ -16,12 +16,12 @@ public class VersionDaoPlus{
 	@PersistenceContext
     private EntityManager em;
 	
-	public Version findLastVersionByOS(String os){
-		Query query = em.createQuery("select c from Version c where c.os = ?1 order by id desc", Version.class).setParameter(1, os);
+	public AppVersion findLastVersionByOS(String os){
+		Query query = em.createQuery("select c from Version c where c.os = ?1 order by id desc", AppVersion.class).setParameter(1, os);
 		query.setFirstResult(0).setMaxResults(1);
 		@SuppressWarnings("unchecked")
-		List<Version> versions = query.getResultList();
-		Version version = versions == null ? null :(versions.isEmpty()?null:versions.get(0));
+		List<AppVersion> versions = query.getResultList();
+		AppVersion version = versions == null ? null :(versions.isEmpty()?null:versions.get(0));
 		return version ;
 	}
 

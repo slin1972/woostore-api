@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nodexy.woostore.server.domain.Version;
+import com.nodexy.woostore.server.domain.AppVersion;
 import com.nodexy.woostore.server.service.FeedbackService;
 import com.nodexy.woostore.server.service.VersionService;
 import com.nodexy.woostore.server.util.CommonResult;
@@ -36,7 +36,7 @@ public class VersionController {
 			@RequestParam String dpi,HttpSession session) {
 		ReturnResult r = new ReturnResult(true, 0, "OK") ;
 		
-		Version version = null ;
+		AppVersion version = null ;
 		Map<String,Object> map = new HashMap<String,Object>();
 		if(os.contains("android")){
 			version = versionService.findLastVersionByOS("android");

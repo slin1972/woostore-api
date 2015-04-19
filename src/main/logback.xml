@@ -8,7 +8,7 @@
   
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">  
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-            <fileNamePattern>logs/woo-app-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>  
+            <fileNamePattern>logs/woostore-app-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>  
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
                 <maxFileSize>100MB</maxFileSize>  
             </timeBasedFileNamingAndTriggeringPolicy>  
@@ -23,7 +23,7 @@
         </encoder>  
     </appender>  
   
-    <logger name="com.woo.server.app" level="DEBUG" additivity="false">  
+    <logger name="com.nodexy.woostore.server.app" level="DEBUG" additivity="false">  
         <appender-ref ref="STDOUT"/>  
         <appender-ref ref="FILE"/>  
     </logger>  

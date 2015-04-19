@@ -133,10 +133,11 @@ Feature 专题数据模型
     modifyTime,
 }
 </pre>
-Author 数据模型
+Developer 数据模型
 <pre>
 {
     id,
+    type:'个人|企业',
     name,
     companyName,
     code,

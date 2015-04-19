@@ -1,5 +1,7 @@
 package com.nodexy.woostore.server.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_category")
-public class Category {
+public class Category implements Serializable {
+	private static final long serialVersionUID = -8295768680525354142L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
@@ -17,30 +21,39 @@ public class Category {
 	private String name;
 	private String parentCatId;
 	private String orderIndex;
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getParentCatId() {
 		return parentCatId;
 	}
+
 	public void setParentCatId(String parentCatId) {
 		this.parentCatId = parentCatId;
 	}
+
 	public String getOrderIndex() {
 		return orderIndex;
 	}
+
 	public void setOrderIndex(String orderIndex) {
 		this.orderIndex = orderIndex;
 	}
+
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + ", parentCatId="

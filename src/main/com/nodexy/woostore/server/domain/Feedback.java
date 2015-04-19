@@ -1,5 +1,6 @@
 package com.nodexy.woostore.server.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Access;
@@ -21,22 +22,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Access(value = AccessType.FIELD)
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Feedback {
+public class Feedback implements Serializable {
+
+	private static final long serialVersionUID = -2580881060445986012L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	@XmlAttribute
-    private Long id;
+	private Long id;
 	@XmlElement
-    private String type;  //类型
-	@Column(name="description")
-	private String desc ;// 描述
+	private String type; // 类型
+	@Column(name = "description")
+	private String desc;// 描述
 
-    private Long userId ;	//设置人id
-    private Integer state;  //类型
-    private Date handleTime ;
-    private String handleUser ;
-    
+	private Long userId; // 设置人id
+	private Integer state; // 类型
+	private Date handleTime;
+	private String handleUser;
+
 	public Date getHandleTime() {
 		return handleTime;
 	}

@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.nodexy.woostore.server.dao.VersionDao;
 import com.nodexy.woostore.server.dao.VersionDaoPlus;
-import com.nodexy.woostore.server.domain.Version;
+import com.nodexy.woostore.server.domain.AppVersion;
 
 @Service
 @Transactional(readOnly=true)
@@ -18,7 +18,7 @@ public class VersionService{
 	@Autowired
 	private VersionDaoPlus versionDaoPlus ;
 
-	public Version findLastVersionByOS(String os) {
+	public AppVersion findLastVersionByOS(String os) {
 		return versionDaoPlus.findLastVersionByOS(os);
 	}
 }

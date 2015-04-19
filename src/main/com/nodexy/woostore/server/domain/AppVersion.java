@@ -1,5 +1,7 @@
 package com.nodexy.woostore.server.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -13,26 +15,28 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="t_version")
-@Access(value=AccessType.FIELD)
+@Table(name = "t_app_version")
+@Access(value = AccessType.FIELD)
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Version {
+public class AppVersion implements Serializable {
+	private static final long serialVersionUID = 3379138966506137755L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
-	
-	private Long versionCode ;
-	
-	private String version ;
-	
-	private Long updateTime ;
-	
-	private String downloadUrl ;
-	
-	private String os ;
-	
+
+	private Long versionCode;
+
+	private String version;
+
+	private Long updateTime;
+
+	private String downloadUrl;
+
+	private String os;
+
 	public Long getId() {
 		return id;
 	}
@@ -80,5 +84,5 @@ public class Version {
 	public void setOs(String os) {
 		this.os = os;
 	}
-	
+
 }
