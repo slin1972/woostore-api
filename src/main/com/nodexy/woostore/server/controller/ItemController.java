@@ -76,4 +76,18 @@ public class ItemController {
 		r.setData(item);
 		return r;
 	}
+	
+	@RequestMapping(value = "score", method = RequestMethod.GET)
+	public CommonResult score(@RequestParam(value = "av") String av,
+			@RequestParam(value = "id") String id,
+			@RequestParam(value = "score") Integer score,
+			@RequestParam(value = "et") String et,
+			@RequestParam(value = "os") String os,
+			@RequestParam(value = "m") String m,
+			@RequestParam String dpi,HttpSession session){
+		
+		
+		
+		return null;// TODO
+	}
 }
